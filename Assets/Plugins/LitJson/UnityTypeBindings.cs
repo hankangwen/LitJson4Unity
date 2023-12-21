@@ -1,12 +1,8 @@
 ﻿using UnityEngine;
 using System;
-using System.Collections;
-
-using LitJson.Extensions;
 
 namespace LitJson
 {
-
 #if UNITY_EDITOR
     [UnityEditor.InitializeOnLoad]
 #endif
@@ -15,7 +11,6 @@ namespace LitJson
     /// </summary>
     public static class UnityTypeBindings
     {
-
         static bool registerd;
 
         static UnityTypeBindings()
@@ -25,21 +20,14 @@ namespace LitJson
 
         public static void Register()
         {
-
             if (registerd) return;
             registerd = true;
 
 
             // 注册Type类型的Exporter
-            JsonMapper.RegisterExporter<Type>((v, w) =>
-            {
-                w.Write(v.FullName);
-            });
+            JsonMapper.RegisterExporter<Type>((v, w) => { w.Write(v.FullName); });
 
-            JsonMapper.RegisterImporter<string, Type>((s) =>
-            {
-                return Type.GetType(s);
-            });
+            JsonMapper.RegisterImporter<string, Type>((s) => { return Type.GetType(s); });
 
             // 注册Vector2类型的Exporter
             Action<Vector2, JsonWriter> writeVector2 = (v, w) =>
@@ -50,10 +38,7 @@ namespace LitJson
                 w.WriteObjectEnd();
             };
 
-            JsonMapper.RegisterExporter<Vector2>((v, w) =>
-            {
-                writeVector2(v, w);
-            });
+            JsonMapper.RegisterExporter<Vector2>((v, w) => { writeVector2(v, w); });
 
             // 注册Vector3类型的Exporter
             Action<Vector3, JsonWriter> writeVector3 = (v, w) =>
@@ -65,10 +50,7 @@ namespace LitJson
                 w.WriteObjectEnd();
             };
 
-            JsonMapper.RegisterExporter<Vector3>((v, w) =>
-            {
-                writeVector3(v, w);
-            });
+            JsonMapper.RegisterExporter<Vector3>((v, w) => { writeVector3(v, w); });
 
             // 注册Vector4类型的Exporter
             JsonMapper.RegisterExporter<Vector4>((v, w) =>
@@ -149,8 +131,6 @@ namespace LitJson
                 w.WriteProperty("right", v.right);
                 w.WriteObjectEnd();
             });
-
         }
-
     }
 }

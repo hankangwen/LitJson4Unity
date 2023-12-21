@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using LitJson.Extensions;
+using LitJson;
 
 [CreateAssetMenu(fileName = "TestScriptableObj",menuName = "ColaFramework/TestScriptableObj")]
 public class TestScriptableObj:ScriptableObject
