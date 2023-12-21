@@ -30,8 +30,8 @@ public class Converter
         using(var stream = new StreamReader(JsonPath))
         {
             var jsonStr = stream.ReadToEnd();
-            var striptableObj = JsonMapper.ToObject<TestScriptableObj>(jsonStr);
-            AssetDatabase.CreateAsset(striptableObj, TransScritptableObjectPath);
+            var scriptableObj = JsonMapper.ToObject<TestScriptableObj>(jsonStr);
+            AssetDatabase.CreateAsset(scriptableObj, TransScritptableObjectPath);
             AssetDatabase.Refresh();
         }
     }
